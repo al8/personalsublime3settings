@@ -2,7 +2,13 @@
 my personal sublime 3 settings
 
 Either symlink or clone into:
-> `/Users/alanw/Library/Application Support/Sublime Text 3/Packages/User`
+> `/Users/$USER/Library/Application Support/Sublime Text 3/Packages/User`
+
+```sh
+git clone https://github.com/al8/personalsublime3settings.git
+mv ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User ~  # backup
+ln -s ~/personalsublime3settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+```
 
 This also contains work in progress.
 
