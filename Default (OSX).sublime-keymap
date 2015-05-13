@@ -1,0 +1,6 @@
+[
+	{ "keys": ["ctrl+shift+c"], "command": "toggle_comment", "args": { "block": false } },
+	{ "keys": ["ctrl+j"], "command": "expand_selection", "args": {"to": "word"} },
+	{ "keys": ["super+j"], "command": "expand_selection", "args": {"to": "word"} },
+    { "keys": ["super+shift+r"], "command": "revert" }
+]

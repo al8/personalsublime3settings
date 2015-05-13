@@ -1,0 +1,13 @@
+{
+	"auto_match_enabled": false,
+	"color_scheme": "Packages/User/Sunburst-Alan.tmTheme",
+	"font_size": 12.0,
+	"rulers":
+	[
+		80
+	],
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+    // Enable auto complete to be triggered automatically when typing.
+    "auto_complete": false
+}

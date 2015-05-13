@@ -1,0 +1,21 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ColorPicker",
+		"FileDiffs",
+		"Package Control",
+		"sublimetext-colossal",
+		"sublimetext-kdiff",
+		"SystemVerilog",
+		"Theme - Spacegray"
+	],
+	"repositories":
+	[
+		"https://github.com/al8/sublimetext-kdiff",
+		"https://github.com/al8/sublimetext-colossal",
+		"https://bitbucket.org/al8/sublimesystemverilog"
+	]
+}
