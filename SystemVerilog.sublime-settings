@@ -1,0 +1,13 @@
+{
+	"sv.fillparam": true,
+	"sv.max_line_length": 80,
+	"sv.instance_prefix": "",
+	"sv.instance_suffix": "_inst",
+	"sv.param_oneline": false,
+	"sv.inst_oneline": false,
+	"sv.param_explicit": true,
+	"sv.param_propagate": true,
+	"sv.decl_indent": 0,
+	"sv.autoconnect": true,
+	"sv.param_port_alignment": true
+}

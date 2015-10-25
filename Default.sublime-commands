@@ -1,0 +1,4 @@
+[
+    { "caption": "Alan - Create Instance", "command": "v_create_inst"},
+    { "caption": "Alan - Instantiate", "command": "alan_verilog_module_inst"},
+]
