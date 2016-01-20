@@ -8,7 +8,7 @@ import sublime, sublime_plugin
 #view.run_command('v_create_inst')
 
 
-def run(lines_lst):
+def run(lines_lst, dot_only=False):
     lst = []
     for l in lines_lst:
         l = l.strip()
@@ -62,13 +62,17 @@ def run(lines_lst):
         else: comma = ','
 
         if io is None: io_str = ""
-        else: io_str = " //%s" % io
+        else: io_str = "  // %s" % io
 
         if c is None: c_str = ""
         else: c_str = " %s" % c
 
         if v is None: v_str = ""
-        else: v_str = ".%s(%s)" % ((v,) * 2)
+        else:
+            if dot_only:
+                v_str = ".%s" % v
+            else:
+                v_str = ".%s(%s)" % ((v,) * 2)
 
         out_str = "%s%s%s%s" % (v_str, comma, io_str, c_str)
 
@@ -96,6 +100,33 @@ class v_create_inst(sublime_plugin.TextCommand):
                 lines_lst = lines_block.split('\n')
                 # print "lines_lst ====>", lines_lst
                 lst = run(lines_lst)
+                # print lst
+                # print dir(view)
+                # print help(view)
+                new_str = "\n".join(lst)
+
+                # view.insert(block.end(), new_str)
+                # view.insert(block.end(), '\n')
+
+                view.replace(edit, region, new_str)
+
+# Extends TextCommand so that run() receives a View to modify.
+class v_create_inst_dot(sublime_plugin.TextCommand):
+    def run(self, edit):
+        view = self.view
+        print("create instance")
+        # Walk through each region in the selection
+        for region in view.sel():
+            if region.empty():
+                print("error: nothing selected")
+            else:
+                # print "create instance 1", dir(region)
+                block = view.line(region)
+                lines_block = view.substr(block)
+                # print "lines_block ====>", lines_block
+                lines_lst = lines_block.split('\n')
+                # print "lines_lst ====>", lines_lst
+                lst = run(lines_lst, dot_only=True)
                 # print lst
                 # print dir(view)
                 # print help(view)

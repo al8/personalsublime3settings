@@ -1,4 +1,5 @@
 [
     { "caption": "-" },
     { "caption": "V - Create Instance", "command": "v_create_inst"},
+    { "caption": "V - Create Instance (DOT only)", "command": "v_create_inst_dot"},
 ]
