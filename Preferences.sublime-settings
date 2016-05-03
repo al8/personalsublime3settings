@@ -3,7 +3,7 @@
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/User/Sunburst2-Alan.tmTheme",
 	"enable_tab_scrolling": false,
-	"font_face": "Monaco",
+	"font_face": "Fira Mono",
 	"font_size": 14.0,
 	"ignored_packages":
 	[
@@ -20,5 +20,7 @@
 	"spacegray_tabs_font_large": true,
 	"theme": "Spacegray Eighties.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true
+	"trim_trailing_white_space_on_save": true,
+	"ensure_newline_at_eof_on_save": true,
+	"highlight_line": true,
 }
