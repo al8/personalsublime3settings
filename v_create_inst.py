@@ -10,6 +10,7 @@ import sublime, sublime_plugin
 
 def run(lines_lst, dot_only=False):
     lst = []
+    detected_module_name = None
     for l in lines_lst:
         l = l.strip()
 
@@ -25,6 +26,31 @@ def run(lines_lst, dot_only=False):
             lst.append( (None, comment_str) )
             continue
 
+        # detect and process module XXX and parameters
+        s = l.split()
+        if s[0] == "module" and len(s) >= 2:
+            # detect "module something"
+            lst.append( (None, s[1] + comment_str) )
+            detected_module_name = s[1]
+            continue
+        elif detected_module_name and s[0] == "#(":
+            lst.append( (None, l + comment_str) )
+            continue
+        elif detected_module_name and s[0] == "parameter":
+            default = " ".join(s[3:]).rstrip(",")
+            lst.append( (None, "".join([".%s(%s)," % (s[1], s[1]), "  // default = %s" % default, comment_str])) )
+            continue
+        elif detected_module_name and s[0] == ")":
+            lst.append( (None, l + comment_str) )
+            continue
+        elif detected_module_name and s[0] == "(":
+            lst.append( (None, detected_module_name + "(") )
+            detected_module_name = None
+            continue
+        elif s[0] == ");":
+            lst.append( (None, l + comment_str) )
+            continue
+
         l_sub_list = l.split(',')
 
         for l in l_sub_list:
@@ -36,7 +62,7 @@ def run(lines_lst, dot_only=False):
             # s = map(lambda x: x.rstrip(","), s)
             s = [x.rstrip(",") for x in s]
 
-            # print ">>>>>>>>>>>>>>", l, comment_str, s
+            # print(">>>>>>>>>>>>>>", l, comment_str, s, detected_module_name)
 
             if len(s) == 0:
                 lst.append( (None, comment_str) )
